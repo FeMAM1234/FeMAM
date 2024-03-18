@@ -64,10 +64,10 @@ class Server():
 
     def add_layer(self,clients):
         redistribute = False
-        if np.std(self.act_eval_loss_queue)<self.args.std_threshold:
+        if np.std(self.eval_loss_queue)<self.args.std_threshold:
             redistribute=True
-            print('act_eval_loss_queue:',self.act_eval_loss_queue)
-            self.act_eval_loss_queue = [999] * self.args.acc_queue_length
+            print('eval_loss_queue:',self.eval_loss_queue)
+            self.eval_loss_queue = [999] * self.args.acc_queue_length
 
             if self.num_layers>1:
                 for client in clients:
